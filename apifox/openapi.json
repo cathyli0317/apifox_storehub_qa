@@ -1,0 +1,806 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "single APIs",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "stress_test"
+    }
+  ],
+  "paths": {
+    "/path": {
+      "get": {
+        "summary": "backoffice-v1-assets - Cache",
+        "deprecated": false,
+        "description": "Pressure test on backoffice-v1-assets\nhttps://storehub.atlassian.net/browse/AUT-789",
+        "tags": [
+          "stress_test"
+        ],
+        "parameters": [
+          {
+            "name": "If-None-Match",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{match}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Modified-Since",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{since}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/products": {
+      "post": {
+        "summary": "未命名接口",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "unitPrice": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "priceType": {
+                    "type": "string"
+                  },
+                  "trackStockLevel": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "priceType"
+                ]
+              },
+              "example": "{\n    \"name\": \"esse ut ea magna dolore\",\n    \"priceType\": \"consectetur nisi sed\",\n    \"unitPrice\": “”,\n    \"trackStockLevel\": true\n}"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Invalid input",
+            "description": ""
+          },
+          "404": {
+            "$ref": "#/components/responses/Record not found",
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/stores/search": {
+      "get": {
+        "summary": "search store",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "uiautomation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "3.158248200000001",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "101.7121664",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "shippingType",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "delivery",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "MY",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "Recommended",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stores": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "business": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "storeDisplayName": {
+                            "type": "string"
+                          },
+                          "avatar": {
+                            "type": "string"
+                          },
+                          "hasBeepProfileImage": {
+                            "type": "boolean"
+                          },
+                          "featuredProductAvatar": {
+                            "type": "string"
+                          },
+                          "street1": {
+                            "type": "string"
+                          },
+                          "street2": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "country": {
+                            "type": "string"
+                          },
+                          "deliveryFee": {
+                            "type": "integer"
+                          },
+                          "minimumConsumption": {
+                            "type": "integer"
+                          },
+                          "geoDistance": {
+                            "type": "number"
+                          },
+                          "validDays": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          },
+                          "validTimeTo": {
+                            "type": "string"
+                          },
+                          "validTimeFrom": {
+                            "type": "string"
+                          },
+                          "currency": {
+                            "type": "string"
+                          },
+                          "currencySymbol": {
+                            "type": "string"
+                          },
+                          "countryCode": {
+                            "type": "string"
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "deliveryRadius": {
+                            "type": "integer"
+                          },
+                          "isOpen": {
+                            "type": "boolean"
+                          },
+                          "enableFreeShipping": {
+                            "type": "boolean"
+                          },
+                          "minimumSpendForFreeDelivery": {
+                            "type": "integer"
+                          },
+                          "enableCashback": {
+                            "type": "boolean"
+                          },
+                          "cashbackRate": {
+                            "type": "integer"
+                          },
+                          "enablePreOrder": {
+                            "type": "boolean"
+                          },
+                          "products": {
+                            "type": "array",
+                            "items": {}
+                          },
+                          "productCount": {
+                            "type": "integer"
+                          },
+                          "searchingTags": {
+                            "type": "array",
+                            "items": {}
+                          },
+                          "fulfillmentOptions": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "reviewInfo": {
+                            "type": "object",
+                            "properties": {
+                              "ratingCount": {
+                                "type": "integer"
+                              },
+                              "rating": {
+                                "type": "string"
+                              },
+                              "priceLevel": {
+                                "type": "null"
+                              }
+                            },
+                            "required": [
+                              "ratingCount",
+                              "rating",
+                              "priceLevel"
+                            ]
+                          },
+                          "storePromoTagInfos": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "tag": {
+                                  "type": "string"
+                                },
+                                "appliedSources": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "appliedClientTypes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "tag",
+                                "appliedSources",
+                                "appliedClientTypes"
+                              ]
+                            }
+                          },
+                          "isOutOfDeliveryRange": {
+                            "type": "boolean"
+                          },
+                          "h": {
+                            "type": "string"
+                          },
+                          "promoTag": {
+                            "type": "string"
+                          },
+                          "storePromoTags": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "isLowestPrice": {
+                            "type": "boolean"
+                          },
+                          "shippingType": {
+                            "type": "string"
+                          },
+                          "showFreeDeliveryTag": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "stores"
+                  ]
+                },
+                "example": {
+                  "stores": [
+                    {
+                      "id": "5efc13a165bfd1000693342f",
+                      "business": "uiautomation",
+                      "name": "Store Location A",
+                      "storeDisplayName": "auto brand name - location name 1",
+                      "avatar": "https://d16kpilgrxu9w6.cloudfront.net/uiautomation/product/62666b60c5fbd7000774c771/1b80e661-9fc3-4f8e-83a8-02200af7ff4c",
+                      "hasBeepProfileImage": false,
+                      "featuredProductAvatar": "https://d16kpilgrxu9w6.cloudfront.net/uiautomation/product/62666b60c5fbd7000774c771/1b80e661-9fc3-4f8e-83a8-02200af7ff4c",
+                      "street1": "Kuala Lumpur City Centre",
+                      "street2": "",
+                      "city": "Kuala Lumpur",
+                      "state": "Wilayah Persekutuan Kuala Lumpur",
+                      "country": "MY",
+                      "deliveryFee": 5,
+                      "minimumConsumption": 1,
+                      "geoDistance": 0.07683567852088687,
+                      "validDays": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        1
+                      ],
+                      "validTimeTo": "23:30",
+                      "validTimeFrom": "00:00",
+                      "currency": "MYR",
+                      "currencySymbol": "RM",
+                      "countryCode": "MY",
+                      "locale": "MS-MY",
+                      "deliveryRadius": 30,
+                      "isOpen": true,
+                      "enableFreeShipping": true,
+                      "minimumSpendForFreeDelivery": 0,
+                      "enableCashback": false,
+                      "cashbackRate": 0,
+                      "enablePreOrder": true,
+                      "products": [],
+                      "productCount": 0,
+                      "searchingTags": [],
+                      "fulfillmentOptions": [
+                        "Delivery",
+                        "Pickup"
+                      ],
+                      "reviewInfo": {
+                        "ratingCount": 1,
+                        "rating": "5.0",
+                        "priceLevel": null
+                      },
+                      "storePromoTagInfos": [
+                        {
+                          "tag": "100% OFF",
+                          "appliedSources": [
+                            8,
+                            7,
+                            6,
+                            5
+                          ],
+                          "appliedClientTypes": [
+                            "app",
+                            "tngMiniProgram",
+                            "web"
+                          ]
+                        },
+                        {
+                          "tag": "50% OFF",
+                          "appliedSources": [
+                            8,
+                            7,
+                            6,
+                            5
+                          ],
+                          "appliedClientTypes": [
+                            "web"
+                          ]
+                        },
+                        {
+                          "tag": "RM5 OFF",
+                          "appliedSources": [
+                            8,
+                            7,
+                            5,
+                            6
+                          ],
+                          "appliedClientTypes": [
+                            "web",
+                            "app"
+                          ]
+                        },
+                        {
+                          "tag": "100% OFF",
+                          "appliedSources": [
+                            6,
+                            5,
+                            7,
+                            8
+                          ],
+                          "appliedClientTypes": []
+                        }
+                      ],
+                      "isOutOfDeliveryRange": false,
+                      "h": "U2FsdGVkX19o8nxPwIByaWvXZEnf5Q7q38wS5qrX3qmGHGvW9T4%2FgnSgjZ2hTyMl",
+                      "promoTag": "100% OFF",
+                      "storePromoTags": [
+                        "100% OFF",
+                        "50% OFF",
+                        "RM5 OFF",
+                        "100% OFF"
+                      ],
+                      "isLowestPrice": false,
+                      "shippingType": "delivery",
+                      "showFreeDeliveryTag": true
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/graphql/": {
+      "post": {
+        "summary": "stress test example",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              },
+              "example": {
+                "query": "query\n{\n  orderStatusSummaryPerBusiness(\n    business: \"saba\"\n    channels: []\n    startTime: \"Thu Aug 25 2022 00:00:00 GMT+0800\"\n    endTime: \"Mon Aug 29 2022 23:59:59 GMT+0800\"\n  \tstatus: []\n    storeIds: [\"5e8ac298a0fe4b015908707d\"]\n    expectDeliveryStartTime: \"\"\n    expectDeliveryEndTime: \"\"\n    includePreOrder: false\n    source: POS\n  ) {\n    timeStr\n    result {\n      status\n      count\n      pickup\n      dineIn\n      delivery\n      takeaway\n    }\n  }\n}\n\n"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "orderStatusSummaryPerBusiness": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      },
+                      "required": [
+                        "orderStatusSummaryPerBusiness"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": {
+                    "orderStatusSummaryPerBusiness": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/new.end.point": {
+      "get": {
+        "summary": "test-new-API-notification",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "$ref": "#/components/responses/Invalid input",
+            "description": ""
+          },
+          "404": {
+            "$ref": "#/components/responses/Record not found",
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/dfsdfsdf": {
+      "get": {
+        "summary": "new api test",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Invalid input",
+            "description": ""
+          },
+          "404": {
+            "$ref": "#/components/responses/Record not found",
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "required": [
+          "name",
+          "photoUrls",
+          "id",
+          "category",
+          "tags",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "maximum": 5000,
+            "description": "Pet ID"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie",
+            "description": "name"
+          },
+          "photoUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "image URL"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "description": "tag"
+          },
+          "status": {
+            "type": "string",
+            "description": "Pet Sales Status",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "Tag ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Tag Name"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "Category ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Category Name"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Record not found": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "Invalid input": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      },
+      "html file": {
+        "description": "",
+        "content": {
+          "text/html": {
+            "schema": {}
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
